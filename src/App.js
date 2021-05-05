@@ -1,5 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import l from 'text/aaa.ts'
+
+import './App.scss'
 
 function App() {
   return (
@@ -9,17 +11,13 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
       </header>
+      <button onClick={l}>点击我</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
