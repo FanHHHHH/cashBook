@@ -12,7 +12,7 @@ const App = () => {
         <Route exact path="/">
           <Money />
         </Route>
-        <Route path="/tags">
+        <Route path="/tags" >
           <Tags />
         </Route>
         <Route path="/money">
