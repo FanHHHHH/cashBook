@@ -4,6 +4,11 @@ import Layout from '../components/Layout'
 const TagsSection = styled.section`
   background: #fff;
   padding: 12px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   ol {
     display: flex;
     > li {
@@ -113,7 +118,7 @@ const NumberPadSection = styled.section`
         background: #b8b8b8;
       }
       &:nth-child(12) {
-        background: #9A9A9A;
+        background: #9a9a9a;
       }
       &:nth-child(14) {
         background: #a9a9a9;
@@ -122,9 +127,14 @@ const NumberPadSection = styled.section`
   }
 `
 
+const MyLayout = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+`
+
 function Money() {
   return (
-    <Layout>
+    <MyLayout className="main">
       <TagsSection>
         <ol>
           <li>衣</li>
@@ -166,7 +176,7 @@ function Money() {
           <button>.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   )
 }
 export default Money
