@@ -5,11 +5,13 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 `
 
 const Main = styled.div`
   flex-grow: 1;
   overflow: auto;
+  min-width: 156px;
 `
 
 function Layout(props: any) {

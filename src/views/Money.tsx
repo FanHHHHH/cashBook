@@ -11,6 +11,7 @@ const TagsSection = styled.section`
   align-items: flex-start;
   ol {
     display: flex;
+    flex-wrap: wrap;
     > li {
       margin: 0 12px;
       padding: 3px 17.5px;
