@@ -24,7 +24,7 @@ a {
 }
 body {
   font-family: $font-hei;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.2;
   background: #e5e5e5;
 }
@@ -35,4 +35,7 @@ body {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+:focus {
+  outline: none;
 }
