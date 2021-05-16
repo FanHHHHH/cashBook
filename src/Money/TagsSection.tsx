@@ -47,6 +47,7 @@ const TagsSection: React.FC = (props) => {
   const toggleTag = (tag: string) => {
     const idx = selectedTags.indexOf(tag)
     if (idx >= 0) {
+      // 返选： 将其他选中的作为新的selectedTags
       setSelectedTags(selectedTags.filter((selectedTag) => selectedTag !== tag))
     } else {
       setSelectedTags([...selectedTags, tag])

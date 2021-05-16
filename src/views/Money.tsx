@@ -17,10 +17,7 @@ function Money() {
         
       </TagsSection>
       <NotesSection>
-        <label>
-          <span>备注</span>
-          <input type="text" placeholder="请在这里输入备注" />
-        </label>
+        
       </NotesSection>
       <CategorySection>
         <ul>

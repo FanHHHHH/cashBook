@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import styled from 'styled-components'
-const NotesSection = styled.section`
+const Wrapper = styled.section`
   padding: 0 16px;
   > label {
     display: flex;
@@ -16,5 +17,20 @@ const NotesSection = styled.section`
     }
   }
 `
+
+const NotesSection: React.FC = () => {
+  const [notes, setNotes] = useState<string>('')
+  const onNotesChange = (note: string) => {
+    setNotes(note)
+  }
+  return (
+    <Wrapper>
+      <label>
+        <span>备注</span>
+        <input type="text" placeholder="请在这里输入备注" value={notes} onChange={(e) => onNotesChange(e.target.value)} />
+      </label>
+    </Wrapper>
+  )
+}
 
 export { NotesSection }
