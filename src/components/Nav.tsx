@@ -19,7 +19,7 @@ const NavWrapper = styled.nav`
         align-items: center;
         padding: 4px 0;
         &.selected {
-          color: red;
+          color: #f68;
           font-weight: bold;
         }
       }

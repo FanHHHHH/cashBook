@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useTags } from 'myHooks/useTags'
 import styled from 'styled-components'
 
 const Wrapper = styled.section`
@@ -37,7 +37,7 @@ type Props = {
   onChange: (tags: string[]) => void
 }
 const TagsSection: React.FC<Props> = (props) => {
-  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
+  const { tags, setTags } = useTags()
   const selectedTags = props.value
   const addTag = () => {
     const tagName = window.prompt('请输入增加的标签名：')
