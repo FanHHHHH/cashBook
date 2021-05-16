@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import styled from 'styled-components'
-const CategorySection = styled.section`
+const Wrapper = styled.section`
   > ul {
     display: flex;
     > li {
@@ -22,4 +23,26 @@ const CategorySection = styled.section`
     }
   }
 `
+
+const CategorySection: React.FC = () => {
+  const [category, setCategory] = useState<string[]>(['收入', '支出'])
+  const [selectedCategory, setSelectedCategory] = useState<string>('收入')
+  return (
+    <Wrapper>
+      <ul>
+        {category.map((cate) => (
+          <li
+            key={cate}
+            className={selectedCategory === cate ? 'selected' : ''}
+            onClick={() => {
+              setSelectedCategory(cate)
+            }}
+          >
+            {cate}
+          </li>
+        ))}
+      </ul>
+    </Wrapper>
+  )
+}
 export { CategorySection }
