@@ -23,10 +23,13 @@ const Wrapper = styled.section`
     }
   }
 `
-
-const CategorySection: React.FC = () => {
+type Props = {
+  value: string
+  onChange: (cate: string) => void
+}
+const CategorySection: React.FC<Props> = (props) => {
   const [category, setCategory] = useState<string[]>(['收入', '支出'])
-  const [selectedCategory, setSelectedCategory] = useState<string>('收入')
+  const selectedCategory = props.value
   return (
     <Wrapper>
       <ul>
@@ -35,7 +38,7 @@ const CategorySection: React.FC = () => {
             key={cate}
             className={selectedCategory === cate ? 'selected' : ''}
             onClick={() => {
-              setSelectedCategory(cate)
+              props.onChange(cate)
             }}
           >
             {cate}

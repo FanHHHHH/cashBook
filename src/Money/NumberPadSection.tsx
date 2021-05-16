@@ -60,14 +60,19 @@ const Wrapper = styled.section`
     }
   }
 `
+type Props = {
+  value: string
+  onChange: (number: string) => void
+  onOk: () => void
+}
 
-const NumberPadSection: React.FC = () => {
-  const [number, _setNumber] = useState<string>('0')
+const NumberPadSection: React.FC<Props> = (props) => {
+  const number = props.value
   const setNumber = (num: string) => {
     if (number.length === 16) {
       return
     }
-    _setNumber(num)
+    props.onChange(num)
   }
   const onClick = (e: React.MouseEvent) => {
     const num = (e.target as HTMLButtonElement).textContent
@@ -90,12 +95,12 @@ const NumberPadSection: React.FC = () => {
       if (number.length === 1) {
         setNumber('0')
       } else {
-        _setNumber(number.slice(0, number.length - 1))
+        props.onChange(number.slice(0, number.length - 1))
       }
     } else if (num === '清空') {
       setNumber('0')
     } else {
-      console.log(number)
+      props.onOk()
     }
   }
   return (

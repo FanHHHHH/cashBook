@@ -32,11 +32,13 @@ const Wrapper = styled.section`
     padding: 2px 4px;
   }
 `
-
-const TagsSection: React.FC = (props) => {
+type Props = {
+  value: string[]
+  onChange: (tags: string[]) => void
+}
+const TagsSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行'])
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-
+  const selectedTags = props.value
   const addTag = () => {
     const tagName = window.prompt('请输入增加的标签名：')
     if (tagName !== null) {
@@ -48,9 +50,9 @@ const TagsSection: React.FC = (props) => {
     const idx = selectedTags.indexOf(tag)
     if (idx >= 0) {
       // 返选： 将其他选中的作为新的selectedTags
-      setSelectedTags(selectedTags.filter((selectedTag) => selectedTag !== tag))
+      props.onChange(selectedTags.filter((selectedTag) => selectedTag !== tag))
     } else {
-      setSelectedTags([...selectedTags, tag])
+      props.onChange([...selectedTags, tag])
     }
   }
   return (
