@@ -1,3 +1,4 @@
+import { Id } from 'lib/Id'
 import { useTags } from 'myHooks/useTags'
 import styled from 'styled-components'
 
@@ -42,7 +43,7 @@ const TagsSection: React.FC<Props> = (props) => {
   const addTag = () => {
     const tagName = window.prompt('请输入增加的标签名：')
     if (tagName !== null) {
-      setTags([...tags, tagName])
+      setTags([...tags, { id: new Id().value, name: tagName }])
     }
   }
 
@@ -60,8 +61,8 @@ const TagsSection: React.FC<Props> = (props) => {
       <ol>
         {tags &&
           tags.map((tag) => (
-            <li key={tag} onClick={() => toggleTag(tag)} className={selectedTags.indexOf(tag) >= 0 ? 'selected' : ''}>
-              {tag}
+            <li key={tag.id} onClick={() => toggleTag(tag.name)} className={selectedTags.indexOf(tag.name) >= 0 ? 'selected' : ''}>
+              {tag.name}
             </li>
           ))}
       </ol>
