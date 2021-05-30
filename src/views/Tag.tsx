@@ -4,7 +4,7 @@ import Icon from 'components/icon'
 import { Input } from 'components/Input'
 import Layout from 'components/Layout'
 import { useTags } from 'myHooks/useTags'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 
 const Header = styled.header`
@@ -27,7 +27,7 @@ interface Params {
 const Tag: React.FC = (props) => {
   const { id } = useParams<Params>()
   const { findTag, updateTag, deleteTag } = useTags()
-  
+
   const tagContent = () => {
     if (findTag(parseInt(id))) {
       return (
@@ -62,10 +62,14 @@ const Tag: React.FC = (props) => {
       )
     }
   }
+  const history = useHistory()
+  const goBack = () => {
+    history.goBack()
+  }
   return (
     <Layout>
       <Header>
-        <Icon name="left"></Icon>
+        <Icon name="left" onClick={goBack}></Icon>
         <span>编辑标签</span>
         <Icon />
       </Header>
