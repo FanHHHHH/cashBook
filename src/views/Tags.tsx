@@ -3,6 +3,8 @@ import { useTags } from 'myHooks/useTags'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
+import { Button } from 'components/Button'
+import { Center } from 'components/Center'
 
 const TagList = styled.ul`
   background: #fff;
@@ -21,21 +23,7 @@ const TagList = styled.ul`
     }
   }
 `
-const Button = styled.button`
-  border: none;
-  font-size: 16px;
-  background: #f68;
-  border-radius: 4px;
-  padding: 10px 16px;
-  color: #fff;
-`
 
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 44px;
-`
 function Tags() {
   const { tags, setTags } = useTags()
   return (
