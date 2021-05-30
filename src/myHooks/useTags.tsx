@@ -17,7 +17,28 @@ const useTags = () => {
   const findTag = (id: number) => {
     return tags.filter((tag) => tag.id === id)[0]
   }
+  const findTagIdx = (id: number) => {
+    for (let i = 0; i < tags.length; i++) {
+      if (tags[i].id === id) {
+        return i
+      }
+    }
+    return -1
+  }
+  const updateTag = (id: number, name: string) => {
+    const idx = findTagIdx(id)
+    const tagsClone = JSON.parse(JSON.stringify(tags))
+    tagsClone.splice(idx, 1, { id, name })
+    setTags(tagsClone)
+  }
 
-  return { tags, setTags, findTag }
+  const deleteTag = (id: number) => {
+    const idx = findTagIdx(id)
+    const tagsClone = JSON.parse(JSON.stringify(tags))
+    tagsClone.splice(idx, 1)
+    setTags(tagsClone)
+  }
+
+  return { tags, setTags, findTag, updateTag, deleteTag }
 }
 export { useTags }

@@ -26,8 +26,42 @@ interface Params {
 }
 const Tag: React.FC = (props) => {
   const { id } = useParams<Params>()
-  const { findTag } = useTags()
-
+  const { findTag, updateTag, deleteTag } = useTags()
+  
+  const tagContent = () => {
+    if (findTag(parseInt(id))) {
+      return (
+        <div>
+          <InputWrapper>
+            <Input
+              label="标签名"
+              type="text"
+              placeholder="请输入标签名"
+              value={findTag(parseInt(id)).name}
+              onChange={(e) => {
+                updateTag(parseInt(id), e.target.value)
+              }}
+            />
+          </InputWrapper>
+          <Center>
+            <Button
+              onClick={() => {
+                deleteTag(parseInt(id))
+              }}
+            >
+              删除标签
+            </Button>
+          </Center>
+        </div>
+      )
+    } else {
+      return (
+        <Center>
+          <div>未找到tag</div>
+        </Center>
+      )
+    }
+  }
   return (
     <Layout>
       <Header>
@@ -35,12 +69,7 @@ const Tag: React.FC = (props) => {
         <span>编辑标签</span>
         <Icon />
       </Header>
-      <InputWrapper>
-        <Input label="标签名" type="text" placeholder="请输入标签名" />
-      </InputWrapper>
-      <Center>
-        <Button>删除标签</Button>
-      </Center>
+      {tagContent()}
     </Layout>
   )
 }
