@@ -38,14 +38,8 @@ type Props = {
   onChange: (tags: string[]) => void
 }
 const TagsSection: React.FC<Props> = (props) => {
-  const { tags, setTags } = useTags()
+  const { tags, addTag } = useTags()
   const selectedTags = props.value
-  const addTag = () => {
-    const tagName = window.prompt('请输入增加的标签名：')
-    if (tagName !== null) {
-      setTags([...tags, { id: new Id().value, name: tagName }])
-    }
-  }
 
   const toggleTag = (tag: string) => {
     const idx = selectedTags.indexOf(tag)
